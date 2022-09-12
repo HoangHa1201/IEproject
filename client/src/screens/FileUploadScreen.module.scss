@@ -1,0 +1,36 @@
+.contentUploadInput{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.contentUploadContainer{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    .contentUploadIcon {
+        font-size: 4rem;
+    }
+    
+    .contentUploadDrop {
+        margin: 4px 0;
+        font-size: 2rem;
+        font-weight: 500;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .contentUploadFooter {
+        font-size: 1.4rem;
+        color: var(--secondary-text-color);
+        text-decoration: underline;
+    }
+}

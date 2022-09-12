@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../../assets/fontawesome-free-6.1.0-web/css/all.min.css'
 import classNames from 'classnames/bind';
 import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 
+import FileUploadScreen from '../../../screens/FileUploadScreen';
+import { getSingleFiles } from '../../../data/api';
 import styles from './Home.module.scss';
 import img1 from '../../../assets/img/img1.png';
 import img2 from '../../../assets/img/img2.png';
@@ -11,7 +13,7 @@ import logo from '../../../assets/img/logo3.png'
 const cx = classNames.bind(styles);
 
 function Home() {
-
+    // =================Handle Bar===================
     const [stateMenu, setStateMenu] = useState('block');
     const [stateClose, setStateClose] = useState('none');
     const handleSideBar = () => {
@@ -23,6 +25,25 @@ function Home() {
             setStateClose('none');
         }
     }
+
+
+    // =================Get Single Files===================
+    const [singleFiles, setSingleFiles] = useState([]);
+
+    const getSingleFilesList = async () => {
+        try {
+            const fileslist = await getSingleFiles();
+            setSingleFiles(fileslist);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+    useEffect(() => {
+        getSingleFilesList();
+    }, []);
+
     return (
         <div className={`${cx('Home')} ${'grid'}`}>
             <div className={`${cx('header')} ${'row'}`}>
@@ -85,15 +106,7 @@ function Home() {
                                 IE Photo Enhancer uses Artificial Intelligence to help you improve, sharpen your photos instantly.
                             </div>
                             <div className={`${cx('contentUpload')} ${''}`}>
-                                <Link to="/download">
-                                    <i className={`${cx('contentUploadIcon')} ${'fa-solid fa-cloud-arrow-up'}`}></i>
-                                    <div className={`${cx('contentUploadDrop')} ${''}`}>
-                                        <p>Drag and drop your image here</p>
-                                    </div>
-                                    <div className={`${cx('contentUploadFooter')} ${''}`}>
-                                        By continuing, you accept our Terms of Service and acknowledge receipt of our Privacy and Cookie Policy
-                                    </div>
-                                </Link>
+                                <FileUploadScreen getsingle={() => getSingleFilesList()} />
                             </div>
                         </div>
                     </div>
