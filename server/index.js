@@ -6,6 +6,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const app = express();
 const path = require('path');
 const cors = require("cors");
+const bodyParser = require("body-parser")
 const session = require("express-session");
 
 const Auth = require("./routes/auth");
@@ -13,6 +14,7 @@ const fileRoutes = require('./routes/fileUploadRoutes');
 const port = process.env.PORT || 8000;
 
 app.use(express.json());
+app.use(bodyParser.json())
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(
