@@ -1,14 +1,19 @@
+'use strict';
 require("dotenv").config();
 const express = require("express");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const app = express();
+const path = require('path');
 const cors = require("cors");
 const session = require("express-session");
 
 const Auth = require("./routes/auth");
+const fileRoutes = require('./routes/fileUploadRoutes');
+const port = process.env.PORT || 8000;
 
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(
     session({
@@ -54,7 +59,8 @@ passport.deserializeUser((user, done) => {
 });
 
 app.use(Auth);
+app.use('/api', fileRoutes.routes);
 
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
     console.log("Server is listening in port " + process.env.PORT);
 });

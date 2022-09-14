@@ -45,6 +45,11 @@ a {
                     .navBarBtnHelp {
                         display: flex;
                         justify-content: flex-end;
+                        &:hover{
+                            padding: 1px 4px;
+                            border-radius: 20px;
+                            background-color: rgba(54, 49, 49, 0.8);
+                        }
                     }
 
                     .navBarBtnLogin {
@@ -52,12 +57,13 @@ a {
                         color: var(--primary-text-color);
                         font-size: 2.4rem;
                         cursor: pointer;
-                       
-
                         p {
                             border: 1px solid var(--secondary-text-color);
                             border-radius: 30px;
                             padding: 0 10px;
+                            &:hover{
+                                background-color: rgba(54, 49, 49, 0.8);
+                            }
                         }
 
                         :hover {
@@ -178,36 +184,12 @@ a {
                         margin-top: 40px;
                         border: 3px dashed var(--secondary-text-color);
                         border-radius: 30px;
-                        padding: 40px;
-
+                        padding: 10px;
+                        position: relative;
                         &:hover {
                             background-color: rgba(54, 49, 49, 0.8);
                             cursor: pointer;
                         }
-
-                        a {
-                            color: var(--primary-text-color);
-
-                            .contentUploadIcon {
-                                font-size: 4rem;
-                            }
-
-                            .contentUploadDrop {
-                                margin: 4px 0;
-                                font-size: 2rem;
-                                font-weight: 500;
-                                height: 80px;
-                                display: flex;
-                                align-items: center;
-                            }
-
-                            .contentUploadFooter {
-                                font-size: 1.4rem;
-                                color: var(--secondary-text-color);
-                                text-decoration: underline;
-                            }
-                        }
-
                     }
                 }
             }

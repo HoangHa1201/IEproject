@@ -6,7 +6,8 @@ import {
     ReactCompareSlider,
     ReactCompareSliderImage,
 } from "react-compare-slider";
-
+import FileUploadScreen from "../../../screens/FileUploadScreen";
+import { getSingleFiles } from "../../../data/api";
 import styles from "./Home.module.scss";
 import img1 from "../../../assets/img/img1.png";
 import img2 from "../../../assets/img/img2.png";
@@ -80,6 +81,22 @@ function Home() {
             setStateClose("none");
         }
     };
+
+    // =================Get Single Files===================
+    const [singleFiles, setSingleFiles] = useState([]);
+
+    const getSingleFilesList = async () => {
+        try {
+            const fileslist = await getSingleFiles();
+            setSingleFiles(fileslist);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getSingleFilesList();
+    }, []);
 
     return (
         <>
@@ -228,29 +245,9 @@ function Home() {
                                     your photos instantly.
                                 </div>
                                 <div className={`${cx("contentUpload")} ${""}`}>
-                                    <Link to="/download">
-                                        <i
-                                            className={`${cx(
-                                                "contentUploadIcon"
-                                            )} ${"fa-solid fa-cloud-arrow-up"}`}
-                                        ></i>
-                                        <div
-                                            className={`${cx(
-                                                "contentUploadDrop"
-                                            )} ${""}`}
-                                        >
-                                            <p>Drag and drop your image here</p>
-                                        </div>
-                                        <div
-                                            className={`${cx(
-                                                "contentUploadFooter"
-                                            )} ${""}`}
-                                        >
-                                            By continuing, you accept our Terms
-                                            of Service and acknowledge receipt
-                                            of our Privacy and Cookie Policy
-                                        </div>
-                                    </Link>
+                                    <FileUploadScreen
+                                        getsingle={() => getSingleFilesList()}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -297,5 +294,3 @@ function Home() {
 }
 
 export default Home;
-
-// {`${cx('')} ${''}`}
