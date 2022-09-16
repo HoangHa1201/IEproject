@@ -5,7 +5,7 @@ import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slide
 import '../../../assets/fontawesome-free-6.1.0-web/css/all.min.css'
 import classNames from 'classnames/bind';
 import styles from './Download.module.scss';
-
+import Loading from './Loading.js'
 
 import before_img from '../../../assets/img/test2.jpg';
 import after_img from '../../../assets/img/zyro-image.png';
@@ -15,6 +15,7 @@ import logo from '../../../assets/img/logo3.png'
 const cx = classNames.bind(styles);
 
 function Download() {
+    let data = false
 
     return (
         <div>
@@ -32,15 +33,25 @@ function Download() {
             </div>
 
             <div className={`${cx('data')}`}>
-                <ReactCompareSlider
-                    itemOne={<ReactCompareSliderImage src={before_img} alt="Image before modified" />}
-                    itemTwo={<ReactCompareSliderImage src={after_img} alt="Image after modified" />}
-                />
+                {(data) ?
+                    <ReactCompareSlider
+                        itemOne={<ReactCompareSliderImage src={before_img} alt="Image before modified" />}
+                        itemTwo={<ReactCompareSliderImage src={after_img} alt="Image after modified" />}
+                    /> :
+                    <div>
+                        <div className={`${cx('data-loading')}`}>
+                            <span>Please wait...</span>
+                            <Loading height={"10vw"} width={"10vw"} />
+                            <span>While we enhancing your image</span>
+                        </div>
+                    </div>
+                }
+
             </div>
 
             <div className={`${cx('footer')}`}>
                 <div className={`${cx('footer-download-button')} ${cx('btn')}`}>
-                    <a href={after_img} download = 'IE Image'>
+                    <a href={after_img} download='IE Image'>
                         <button className={`${cx('button-wrapper')}`}>
                             <span>Download</span>
                         </button>

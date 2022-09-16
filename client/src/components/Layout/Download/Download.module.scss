@@ -64,13 +64,27 @@
 }
 
 .data {
-
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
 
-    * {
+    > div {
         height: calc(100vh - 144px);
+        line-height: calc(100vh - 144px);
+    }
+
+    .data-loading {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+        span {
+            font-size: 28px;
+        }
+
+        div{
+            margin: auto;
+        }
+        
     }
 
 

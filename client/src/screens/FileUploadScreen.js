@@ -18,7 +18,7 @@ const FileUploadScreen = (props) => {
     }
     return (
         <>
-            <input type='file' className={`${cx('contentUploadInput')} ${''}`} onChange={(e) => {
+            <input type='file' accept='image/*' className={`${cx('contentUploadInput')} ${''}`} onChange={(e) => {
                 uploadSingleFile(e)
                 handleChange()
             }} />
