@@ -14,10 +14,6 @@ import before_img from '../../../assets/img/test2.jpg';
 import after_img from '../../../assets/img/zyro-image.png';
 import logo from '../../../assets/img/logo3.png'
 
-import before_img from "../../../assets/img/test2.jpg";
-import after_img from "../../../assets/img/zyro-image.png";
-import logo from "../../../assets/img/logo3.png";
-
 const cx = classNames.bind(styles);
 
 function Download() {
