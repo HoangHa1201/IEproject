@@ -1,3 +1,8 @@
+import { useState, useEffect } from "react";
+import classNames from "classnames/bind";
+import styles from "./Login.module.scss";
+const cx = classNames.bind(styles);
+
 function Login() {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -156,7 +161,7 @@ function Login() {
                 )}
             </div>
         </div>
-     );
+    );
 }
 
 export default Login;
