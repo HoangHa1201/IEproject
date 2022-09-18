@@ -48,20 +48,9 @@ function Download() {
                         </div>
                     </div>
                 }
-
             </div>
 
             <div className={`${cx('footer')}`}>
-                <div className={`${cx('footer-download-button')} ${cx('btn')}`}>
-                    <a href={after_img} download='IE Image'>
-                        <button className={`${cx('button-wrapper')}`}>
-                            <span>Download</span>
-                        </button>
-                    </a>
-                    {/* <button className={`${cx('button-wrapper')}`}>
-                        <span>Download</span>
-                    </button> */}
-                </div>
                 <div className={`${cx("footer-add-button")} ${cx("btn")}`}>
                     <input
                         id="image-upload-btn"
@@ -82,6 +71,26 @@ function Download() {
                         <span>Upload New Image</span>
                     </button>
                 </div>
+                {(data) ?
+                    <>
+                        <div className={`${cx('footer-download-button')} ${cx('btn')}`}>
+                            <a href={after_img} download='IE Image'>
+                                <button className={`${cx('button-wrapper')}`}>
+                                    <span>Download</span>
+                                </button>
+                            </a>
+                            {/* <button className={`${cx('button-wrapper')}`}>
+                        <span>Download</span>
+                    </button> */}
+                        </div>
+
+                        <div className={`${cx('footer-share-button')} ${cx('btn')}`}>
+                            <button className={`${cx('button-wrapper')}`}>
+                                <span>Share</span>
+                            </button>
+                        </div>
+                    </> : null
+                }
             </div>
         </div>
     );
