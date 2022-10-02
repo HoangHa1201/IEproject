@@ -62,4 +62,6 @@ passport.deserializeUser((user, done) => {
 app.use(Auth);
 app.use("/api", fileRoutes.routes);
 
-app.listen(port, () => console.log(`Server started on port http://localhost:${port}`));
+app.listen(port, () =>
+    console.log(`Server started on port http://localhost:${port}`)
+);
